@@ -1,5 +1,13 @@
 .wrapper {
-  border: 5px solid blue;
+  /* border: 5px solid blue; */
   width: 90%;
   margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    max-width: 45%;
+    margin-left: 10%;
+    padding-top: 5%;
+  }
 }

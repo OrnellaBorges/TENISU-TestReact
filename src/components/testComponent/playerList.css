@@ -26,6 +26,7 @@
 .playerCard__content-resume {
   flex-grow: 1;
   border: 3px solid orange;
+  padding-right: 3rem;
 }
 
 .playerCard__playerName {
