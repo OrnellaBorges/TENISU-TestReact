@@ -1,0 +1,59 @@
+.footer {
+  &__list {
+    padding: 2rem;
+
+    &__title-level3 {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__foldable-list {
+    background-color: var(--footer-green);
+    padding: 2rem;
+    color: var(--footer-white);
+    display: flex;
+    justify-content: center;
+
+    &__title-level3:before {
+      content: "";
+      display: inline-block;
+      width: 0.5rem;
+      height: 0.5rem;
+      border-top: 1px solid var(--footer-white);
+      border-right: 1px solid var(--footer-white);
+      transform: rotate(45deg);
+      margin-right: 1rem;
+    }
+
+    &__list {
+      &__element {
+        &:first-child {
+          cursor: pointer;
+        }
+        &__sublist {
+          display: none;
+
+          &--active {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  &__grid {
+    padding: 3rem;
+
+    &__list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+
+      &__element {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
