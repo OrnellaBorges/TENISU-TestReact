@@ -3,8 +3,8 @@ import "./App.scss";
 import "./reset.css";
 import "./variables.css";
 
-import CardPlayer from "./components/card/CardPlayer";
 import Home from "./page/Home";
+import PlayerList from "./components/testComponent/PlayerList";
 
 function App() {
   //const [isSublistOpen, setIsSublistOpen] = useState<boolean>(false);
@@ -12,7 +12,8 @@ function App() {
   return (
     <Home>
       <input type="text" placeholder="Search a player" />
-      <CardPlayer />
+
+      <PlayerList />
     </Home>
   );
 }
