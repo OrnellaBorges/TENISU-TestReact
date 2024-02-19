@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,700&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+:root {
+  --titleBold: "Montserrat", sans-serif;
+  --text: "Mulish", sans-serif;
+  --bold: 700;
+  --semiBold: 600;
+
+  --light: #f9f9f9;
+  --pink: #ff4f5a;
+  --dark-green: #1a2e35;
+  --aqua-green: #1cbbb4;
+  --blue: #3c91e6;
+  --light-blue: #cfe8ff;
+  --grey: #eee;
+  --dark-grey: #aaaaaa;
+  --gray-Tenisu: #000000;
+  --dark: #342e37;
+  --red: #db504a;
+  --yellow: #ffce26;
+  --light-yellow: #fff2c6;
+  --orange: #fd7238;
+  --orange-Tenisu: #f2753b;
+  --light-orange-Tenisu: #ebad65;
+  --light-orange: #ffe0d3;
+}
+
+#root {
+  min-height: 100vh;
+  background: var(--light);
+}
+
+/* #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+  } */

@@ -1,5 +1,8 @@
 import React from "react";
 
-export default function home() {
-  return <main>homePage</main>;
+type HomeProps = {
+  children: React.ReactNode; //
+};
+export default function Home({ children }: HomeProps) {
+  return <main>{children}</main>;
 }
