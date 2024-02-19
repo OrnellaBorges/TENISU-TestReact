@@ -1,0 +1,13 @@
+.inputField {
+  width: 100%;
+  height: 3rem;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin: 20px 0;
+}
+
+.inputField::placeholder {
+  color: var(--light-orange-Tenisu);
+}
