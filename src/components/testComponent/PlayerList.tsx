@@ -42,10 +42,13 @@ export default function PlayerList() {
       }
     };
 
+   
     //utilisation appel de la fonction fetchData qui prend la fonction tryGetAllPlayersInfo() dans le hook
     fetchPlayersDatas();
   }, []);
+*/
 
+  /*
   if (isError) {
     return <div>Une erreur s'est produite lors du chargement des joueurs.</div>;
   }
@@ -63,15 +66,15 @@ export default function PlayerList() {
           <h2 className="playerCard__playerName">{`${players[0].firstname} ${players[0].lastname}`}</h2>
           <ul className="statList">
             <li className="statList-item">
-              Rank
+              RANK
               <span className="statList-info">{`#${players[0].data.rank}`}</span>
             </li>
             <li className="statList-item">
-              Points
+              POINTS
               <span className="statList-info">{players[0].data.points}</span>
             </li>
             <li className="statList-item">
-              Country
+              COUNTRY
               <span className="statList-info">{players[0].country.code}</span>
             </li>
           </ul>
