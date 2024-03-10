@@ -1,10 +1,13 @@
-import React from "react";
+import { useState } from "react";
 import "./input.css";
 
-export default function Input() {
+export default function Input({ setStateProps }) {
   return (
-    <form>
-      <input className="inputField" type="text" placeholder="texte ici" />
-    </form>
+    <input
+      className="inputField"
+      type="text"
+      placeholder="search"
+      onChange={(e) => setStateProps(e.target.value)}
+    />
   );
 }

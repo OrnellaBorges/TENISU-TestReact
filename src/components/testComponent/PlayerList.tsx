@@ -3,7 +3,7 @@ import { useGetAllPlayers } from "../../hooks/useGetAllPlayers";
 import "./playerList.css";
 
 export default function PlayerList() {
-  const players = [
+  /*   const players = [
     {
       id: 52,
       firstname: "Novak",
@@ -26,11 +26,11 @@ export default function PlayerList() {
         last: [1, 1, 1, 1, 1],
       },
     },
-  ];
-  /* const { isError, isLoading, tryGetAllPlayersInfo, players } =
-    useGetAllPlayers(); */
+  ]; */
+  const { isError, isLoading, tryGetAllPlayersInfo, players } =
+    useGetAllPlayers();
 
-  /*   useEffect(() => {
+  useEffect(() => {
     console.log("je suis dans le useEffect");
     const fetchPlayersDatas = async () => {
       try {
@@ -42,23 +42,21 @@ export default function PlayerList() {
       }
     };
 
-   
     //utilisation appel de la fonction fetchData qui prend la fonction tryGetAllPlayersInfo() dans le hook
     fetchPlayersDatas();
   }, []);
-*/
 
-  /*
   if (isError) {
     return <div>Une erreur s'est produite lors du chargement des joueurs.</div>;
   }
 
   if (isLoading) {
     return <div>Chargement en cours...</div>;
-  } */
+  }
+
   return (
     <section>
-      <li className="playerCard">
+      {/* <li className="playerCard">
         <div className="playerCard__container-image ">
           <img className="player-image" src={players[0].picture} alt="" />
         </div>
@@ -79,25 +77,25 @@ export default function PlayerList() {
             </li>
           </ul>
         </div>
-      </li>
-      {/* <div>
-      <h1>Liste des joueurs</h1>
-      <ul>
-        {players.map((player) => (
-          <li key={player.id}>
-            <img
-              src={player.picture}
-              alt={`${player.firstname} ${player.lastname}`}
-            />
-            <div>
-              <h2>{`${player.firstname} ${player.lastname}`}</h2>
-              <p>Pays: {player.country.code}</p>
-              <p>Rang: {player.data.rank}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div> */}
+      </li> */}
+      <div>
+        <h1>Liste des joueurs</h1>
+        <ul>
+          {players.map((player) => (
+            <li key={player.id}>
+              <img
+                src={player.picture}
+                alt={`${player.firstname} ${player.lastname}`}
+              />
+              <div>
+                <h2>{`${player.firstname} ${player.lastname}`}</h2>
+                <p>Pays: {player.country.code}</p>
+                <p>Rang: {player.data.rank}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
