@@ -1,3 +1,7 @@
+.home-section {
+  border: 3px solid yellow;
+}
+
 .playerCard {
   display: flex;
   /* justify-content: center;
@@ -8,32 +12,57 @@
   max-height: 150px;
   overflow: hidden; */
   background-color: var(--light);
-  height: 8rem;
-  position: relative;
+  border: 1px solid;
+  /*   position: relative; */
 }
 
-.playerCard__container-image {
+/* .playerCard__container-image {
   width: 35%;
   border: 3px solid red;
   overflow: hidden;
+  position: absolute;
+} */
+
+.playerCard__container-image {
+  background-color: red;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%; /* Rendre le conteneur circulaire en utilisant le rayon de bordure */
+  overflow: hidden; /* Masquer le contenu dépassant du conteneur */
+  position: relative; /* Position relative pour permettre le positionnement absolu de l'image */
 }
 
 .player-image {
-  border: 2px solid green;
-  width: 150%;
+  /* border: 2px solid green; */
+  width: 100%;
+  /* Assurez-vous que l'image remplit entièrement le conteneur */
   height: auto;
-  margin-top: 8rem;
+  /* Pour conserver les proportions de l'image */
+  position: absolute;
+  /* Position absolue pour placer l'image au centre du conteneur */
+  top: 26px;
+  /* Alignez le haut de l'image au centre vertical du conteneur */
+  left: -2px;
+  /* Alignez la gauche de l'image au centre horizontal du conteneur */
+  /* transform: translate(-50%, -50%); */
+  /* Déplacez l'image de moitié de sa taille dans les deux directions pour la centrer */
+  object-fit: cover;
+  /* Redimensionner l'image pour qu'elle couvre entièrement le conteneur */
+  object-position: center top;
+  /* Centrer l'image horizontalement et positionner sa partie supérieure au centre vertical du conteneur */
+  scale: 2;
 }
 
 .playerCard__content-resume {
   flex-grow: 1;
   border: 3px solid orange;
-  padding-right: 3rem;
+  padding: 2rem 0;
 }
 
 .playerCard__playerName {
-  margin-bottom: 2rem;
-  font-size: 18px;
+  font-size: 1rem;
+  padding-bottom: 2rem;
+
   font-family: var(--title);
   color: var(--orange-Tenisu);
 }
@@ -59,5 +88,5 @@
   border: 1px solid black;
   display: block;
   color: var(--orange-Tenisu);
-  font-weight: var(--semibold);
+  font-weight: var(--bold);
 }

@@ -29,11 +29,3 @@
   min-height: 100vh;
   background: var(--light);
 }
-
-/* #root {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
-  } */
