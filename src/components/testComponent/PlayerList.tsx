@@ -36,7 +36,10 @@ export default function PlayerList() {
                 />
               </div>
 
-              <div className="playerCard__content-resume">
+              <div
+                data-image={player.picture}
+                className="playerCard__content-resume test"
+              >
                 <h2 className="playerCard__playerName">{`${player.firstname} ${player.lastname}`}</h2>
                 <ul className="statList">
                   <li className="statList-item">

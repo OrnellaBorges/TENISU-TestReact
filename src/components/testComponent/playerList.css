@@ -3,6 +3,10 @@
   width: 100%;
 }
 
+.test::after {
+  background-image: attr(data-image);
+}
+
 .playerCard {
   background-color: var(--light);
   border: 5px solid blue;
@@ -10,8 +14,9 @@
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   position: relative;
 
-  /* background-image: attr(data-image-url);
-  background-image: url("src/asset/playerImages/Djokovic.png");
+  /* 
+  background-image: attr(data-image-url);
+  background-image: attr(data-image-url url);
  */
 
   /*  
@@ -54,8 +59,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: red;
-  width: 30%;
+  /* background-color: red; */
+  width: 33%;
   height: 100%;
   /*border-radius: 50%;  Rendre le conteneur circulaire en utilisant le rayon de bordure */
   overflow: hidden; /* Masquer le contenu dépassant du conteneur */
@@ -70,9 +75,9 @@
   /* Pour conserver les proportions de l'image */
 
   /* Position absolue pour placer l'image au centre du conteneur */
-  top: 26px;
+  top: 63px;
   /* Alignez le haut de l'image au centre vertical du conteneur */
-  left: -2px;
+  left: -7px;
   /* Alignez la gauche de l'image au centre horizontal du conteneur */
   /* transform: translate(-50%, -50%); */
   /* Déplacez l'image de moitié de sa taille dans les deux directions pour la centrer */
@@ -80,15 +85,14 @@
   /* Redimensionner l'image pour qu'elle couvre entièrement le conteneur */
   object-position: center top;
   /* Centrer l'image horizontalement et positionner sa partie supérieure au centre vertical du conteneur */
-  scale: 2;
+  scale: 1.5;
 }
 
 .playerCard__content-resume {
   border: 3px solid orange;
   padding: 1.5rem 0;
-  width: 70%;
-  margin-left: 30%;
-  margin-right: 10%;
+  width: 67%;
+  margin-left: 33%;
 }
 
 .playerCard__playerName {
