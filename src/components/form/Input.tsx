@@ -6,7 +6,7 @@ export default function Input({ setStateProps }) {
     <input
       className="inputField"
       type="text"
-      placeholder="search"
+      placeholder="search a player"
       onChange={(e) => setStateProps(e.target.value)}
     />
   );

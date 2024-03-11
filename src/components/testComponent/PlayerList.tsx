@@ -23,7 +23,11 @@ export default function PlayerList() {
       <div>
         <ul>
           {players.map((player) => (
-            <li key={player.id} className="playerCard">
+            <li
+              key={player.id}
+              className="playerCard"
+              data-image-url={player.picture}
+            >
               <div className="playerCard__container-image">
                 <img
                   className="player-image"
@@ -49,12 +53,6 @@ export default function PlayerList() {
                   </li>
                 </ul>
               </div>
-
-              {/* <div className="playerCard__content-resume">
-                <h2>{`${player.firstname} ${player.lastname}`}</h2>
-                <p>Pays: {player.country.code}</p>
-                <p>Rang: {player.data.rank}</p>
-              </div> */}
             </li>
           ))}
         </ul>

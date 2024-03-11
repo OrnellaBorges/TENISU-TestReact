@@ -1,9 +1,24 @@
 .home-section {
   border: 3px solid yellow;
+  width: 100%;
 }
 
 .playerCard {
+  background-color: var(--light);
+  border: 5px solid blue;
+  margin-bottom: 1rem;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  position: relative;
+
+  /* background-image: attr(data-image-url);
+  background-image: url("src/asset/playerImages/Djokovic.png");
+ */
+
+  /*  
   display: flex;
+  position: relative; 
+  */
+
   /* justify-content: center;
   align-items: center;
   border: 1px solid blue;
@@ -11,11 +26,22 @@
   max-width: 100%;
   max-height: 150px;
   overflow: hidden; */
-  background-color: var(--light);
-  border: 1px solid;
-  /*   position: relative; */
 }
 
+/* .player-card::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: attr(data-image-url url);
+}
+ */
 /* .playerCard__container-image {
   width: 35%;
   border: 3px solid red;
@@ -23,22 +49,26 @@
   position: absolute;
 } */
 
+/* MOBILE VERSION BULLE*/
 .playerCard__container-image {
+  position: absolute;
+  top: 0;
+  left: 0;
   background-color: red;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%; /* Rendre le conteneur circulaire en utilisant le rayon de bordure */
+  width: 30%;
+  height: 100%;
+  /*border-radius: 50%;  Rendre le conteneur circulaire en utilisant le rayon de bordure */
   overflow: hidden; /* Masquer le contenu dépassant du conteneur */
-  position: relative; /* Position relative pour permettre le positionnement absolu de l'image */
 }
 
 .player-image {
+  position: absolute;
   /* border: 2px solid green; */
   width: 100%;
   /* Assurez-vous que l'image remplit entièrement le conteneur */
   height: auto;
   /* Pour conserver les proportions de l'image */
-  position: absolute;
+
   /* Position absolue pour placer l'image au centre du conteneur */
   top: 26px;
   /* Alignez le haut de l'image au centre vertical du conteneur */
@@ -54,13 +84,15 @@
 }
 
 .playerCard__content-resume {
-  flex-grow: 1;
   border: 3px solid orange;
-  padding: 2rem 0;
+  padding: 1.5rem 0;
+  width: 70%;
+  margin-left: 30%;
+  margin-right: 10%;
 }
 
 .playerCard__playerName {
-  font-size: 1rem;
+  font-size: 1.2rem;
   padding-bottom: 2rem;
 
   font-family: var(--title);
@@ -83,10 +115,16 @@
   font-weight: var(--semibold);
   color: rgba(0, 0, 0, 0.3);
 }
+.stat-title {
+  color: blue;
+}
 
 .statList-item .statList-info {
   border: 1px solid black;
   display: block;
   color: var(--orange-Tenisu);
   font-weight: var(--bold);
+}
+
+@media screen and( min-width: 768px ) {
 }
