@@ -27,24 +27,9 @@ export default function PlayerList() {
       },
     },
   ]; */
-  const { isError, isLoading, tryGetAllPlayersInfo, players } =
-    useGetAllPlayers();
+  const { isError, isLoading, players } = useGetAllPlayers();
 
-  useEffect(() => {
-    console.log("je suis dans le useEffect");
-    const fetchPlayersDatas = async () => {
-      try {
-        const response = await tryGetAllPlayersInfo();
-        console.log("response inside the useEffect", response);
-        //setPlayers(response.data.players);
-      } catch (error) {
-        console.error("Error fetching player data:", error);
-      }
-    };
-
-    //utilisation appel de la fonction fetchData qui prend la fonction tryGetAllPlayersInfo() dans le hook
-    fetchPlayersDatas();
-  }, []);
+  console.log("players", players);
 
   if (isError) {
     return <div>Une erreur s'est produite lors du chargement des joueurs.</div>;
@@ -82,8 +67,9 @@ export default function PlayerList() {
         <h1>Liste des joueurs</h1>
         <ul>
           {players.map((player) => (
-            <li key={player.id}>
+            <li key={player.id} className="playerCard">
               <img
+                className="player-image"
                 src={player.picture}
                 alt={`${player.firstname} ${player.lastname}`}
               />
