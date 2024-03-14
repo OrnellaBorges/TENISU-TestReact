@@ -1,6 +1,7 @@
 import React from "react";
 import "./wrapper.css";
 
-export default function Wrapper({ children }) {
-  return <section className="wrapper">{children}</section>;
+export default function Wrapper({ children, type }) {
+  const WrapperTag = type;
+  return <WrapperTag className="wrapper">{children}</WrapperTag>;
 }
