@@ -1,7 +1,11 @@
 import { useState } from "react";
 import "./input.css";
 
-export default function Input({ setStateProps }) {
+type InputProps = {
+  setStateProps: (value: string) => void;
+};
+
+export default function Input({ setStateProps }: InputProps) {
   return (
     <input
       className="inputField"

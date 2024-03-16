@@ -1,8 +1,19 @@
+import { PlayerType } from "../../hooks/useGetAllPlayers";
 import "./playerList.css";
 
 import { Link } from "react-router-dom";
 
-export default function PlayerList({ players, isLoading, isError }) {
+export type PlayerListProps = {
+  players: PlayerType[];
+  isLoading: boolean;
+  isError: boolean;
+};
+
+export default function PlayerList({
+  players,
+  isLoading,
+  isError,
+}: PlayerListProps) {
   const getCountryFromUrl = (url: string) => {
     const splitedUrl = url.split("/");
     const imageFileName = splitedUrl[splitedUrl.length - 1];

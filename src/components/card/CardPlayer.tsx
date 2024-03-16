@@ -1,20 +1,4 @@
-import React from "react";
-
-type PlayerCardInfo = {
-  urlImage: string;
-  playerName: string;
-  rank: string;
-  points: number;
-  country: string;
-};
-
-export default function CardPlayer({
-  urlImage,
-  playerName,
-  rank,
-  points,
-  country,
-}) {
+export default function CardPlayer() {
   return (
     <div className="playerCard">
       <div className="playerCard__container-image ">

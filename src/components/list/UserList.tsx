@@ -1,6 +1,6 @@
 import { Users } from "../../api/usersApi";
 
-export default function UserList({ state }) {
+export default function UserList({ state }: { state: string }) {
   console.log("state", state);
 
   // creation d'une fonction qui va permettre de dynamiser

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getAllPlayers } from "../api/getPlayersData";
 
 // Définir le type pour un joueur
-type PlayerType = {
+export type PlayerType = {
   id: number;
   firstname: string;
   lastname: string;
@@ -20,6 +20,7 @@ type PlayerType = {
     last: number[];
   };
 };
+
 export function useGetAllPlayers() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
@@ -50,5 +51,9 @@ export function useGetAllPlayers() {
     tryGetAllPlayersInfo();
   }, []);
 
-  return { isError, isLoading, players };
+  return {
+    isError: isError,
+    isLoading: isLoading,
+    players: players,
+  };
 }

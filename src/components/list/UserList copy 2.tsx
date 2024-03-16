@@ -1,6 +1,6 @@
 import { Users } from "../../api/usersApi";
 
-export default function UserList({ state }) {
+export default function UserList({ state }: { state: string }) {
   const filteredUsers = Users.filter((user) =>
     user.first_name.toLowerCase().includes(state)
   );
