@@ -6,9 +6,32 @@ import PlayerList, {
   PlayerListProps,
 } from "../components/testComponent/PlayerList";
 
-export default function Home({ players, isLoading, isError }: PlayerListProps) {
+export default function Home({
+  players,
+  isLoading,
+  isError,
+  toggleModal,
+}: PlayerListProps) {
   const [state, setState] = useState<string>("");
   console.log(state);
+
+  const filteredPlayers = players.filter((player) => {
+    function concatLetters() {
+      let personne = "";
+      const chemin = player.firstname;
+
+      for (let i = 0; i <= state.length; i++) {
+        personne = personne + chemin[i];
+      }
+      return personne;
+    }
+
+    //return concatLetters().toLowerCase().includes("emi");
+    //return (user.first_name[0] + user.first_name[1] + user.first_name[2]).toLowerCase().includes("emi");
+    return concatLetters().toLowerCase().includes(state);
+    // a faire avec la methode REDUCE()
+  });
+
   return (
     <Main>
       <Wrapper tag="div">
@@ -17,7 +40,13 @@ export default function Home({ players, isLoading, isError }: PlayerListProps) {
         </form>
 
         {/* <UserList state={state} /> */}
-        <PlayerList players={players} isError={isError} isLoading={isLoading} />
+        <PlayerList
+          players={players}
+          isError={isError}
+          isLoading={isLoading}
+          toggleModal={toggleModal}
+          filteredPlayers={filteredPlayers}
+        />
       </Wrapper>
     </Main>
   );

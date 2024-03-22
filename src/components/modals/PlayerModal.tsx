@@ -1,16 +1,30 @@
-import { useParams } from "react-router-dom";
+import "./modal.css";
+
 import { PlayerType } from "../../hooks/useGetAllPlayers";
 
 type PlayerDetailsType = {
   players: PlayerType[];
+  playerId: number | null;
+
+  closeModal: () => void;
 };
 
-export default function PlayerDetail({ players }: PlayerDetailsType) {
-  const { id } = useParams();
-  console.log("ID du joueur:", id);
-  console.log("Données des joueurs:", players);
+export default function PlayerModal({
+  players,
+  playerId,
+  closeModal,
+}: PlayerDetailsType) {
+  if (playerId === null) {
+    return <p>Joueur non trouvé</p>;
+  }
+  console.log("id reçu dans la modal", playerId);
+  console.log("players inside modal", players);
 
-  const getCountryFromUrl = (url: string) => {
+  /*   const { id } = useParams();
+  console.log("ID du joueur:", id);
+  console.log("Données des joueurs:", players); */
+
+  /*  const getCountryFromUrl = (url: string) => {
     const splitedUrl = url.split("/");
     const imageFileName = splitedUrl[splitedUrl.length - 1];
     const countryArray = imageFileName.split(".");
@@ -20,10 +34,10 @@ export default function PlayerDetail({ players }: PlayerDetailsType) {
 
   const capitalizeFirstLetter = (string: string) => {
     return string[0].toUpperCase() + string.slice(1);
-  };
+  }; */
 
   // Recherche du joueur correspondant à l'ID dans la liste des joueurs
-  const player = players.find((player) => player.id === Number(id));
+  const player = players.find((player) => player.id === Number(playerId));
   console.log("Joueur trouvé:", player);
 
   if (!player) {
@@ -31,7 +45,7 @@ export default function PlayerDetail({ players }: PlayerDetailsType) {
   }
 
   // fonction qui extrait et rend dynamique la liste data dans l'objet
-  const renderDataPlayerList = () => {
+  /* const renderDataPlayerList = () => {
     return (
       <>
         {Object.entries(player.data)
@@ -54,33 +68,24 @@ export default function PlayerDetail({ players }: PlayerDetailsType) {
           ))}
       </>
     );
-  };
-  return (
-    <div className="modalContainer">
-      <button className="openClose-Button">X</button>
-      {/* Affichez les détails complets du joueur ici */}
+  }; */
 
-      <div className="playerModal-Container">
-        <h1 className="player-fullName">
-          <span className="firstName">{player.firstname}</span>{" "}
-          {player.lastname}
-        </h1>
-        {/*         <figure>
-          <img src={player.picture} alt="" />
-        </figure> */}
-        <div>
-          <figure>
-            <img src={player.country.picture} alt="" />
-            <figcaption>{player.country.code}</figcaption>
-          </figure>
+  return (
+    <div className="modalBackground">
+      <div className="titleCloseBtn">
+        <button onClick={() => closeModal()}>X</button>{" "}
+        {/* Ferme la modal en passant null à toggleModal */}
+      </div>
+      <div className="modalContainer">
+        <div className="title">
+          <h2>
+            {player.firstname} {player.lastname}
+          </h2>
         </div>
 
-        <ul
-          className="
-        statContainer"
-        >
-          {renderDataPlayerList()}
-        </ul>
+        <div className="body">
+          <p>Ma super modal de test from Youtube tutorial</p>
+        </div>
       </div>
     </div>
   );

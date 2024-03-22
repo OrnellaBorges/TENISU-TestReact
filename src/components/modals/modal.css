@@ -1,0 +1,23 @@
+.modalBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: bisque;
+
+  border: 2px solid red;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modalContainer {
+  width: 70%;
+  border: 2px solid blue;
+  border-radius: 1rem;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

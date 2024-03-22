@@ -1,18 +1,22 @@
 import { PlayerType } from "../../hooks/useGetAllPlayers";
 import "./playerList.css";
 
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 export type PlayerListProps = {
   players: PlayerType[];
   isLoading: boolean;
   isError: boolean;
+  toggleModal: (playerId: number) => void;
+  filteredPlayers: () => void;
 };
 
 export default function PlayerList({
   players,
   isLoading,
   isError,
+  toggleModal,
+  filteredPlayers,
 }: PlayerListProps) {
   const getCountryFromUrl = (url: string) => {
     const splitedUrl = url.split("/");
@@ -40,11 +44,14 @@ export default function PlayerList({
         <ul>
           {players.map((player) => {
             const rank = Object.keys(player.data)[0];
+            const points = Object.keys(player.data)[1];
+
             return (
               <li
                 key={player.id}
                 className="playerCard"
                 data-image-url={player.picture}
+                onClick={() => toggleModal(player.id)}
               >
                 <div className="playerCard__container-image">
                   <img
@@ -67,7 +74,7 @@ export default function PlayerList({
                       <span className="statList-info">{`#${player.data.rank}`}</span>
                     </li>
                     <li className="statList-item">
-                      <p>POINTS</p>
+                      <p>{capitalizeFirstLetter(points)}</p>
                       <span className="statList-info">
                         {player.data.points}
                       </span>
@@ -79,9 +86,10 @@ export default function PlayerList({
                       </span>
                     </li>
                   </ul>
-                  <Link to={`/player/${player.id}`} className="playerLink">
+                  {/* <Link to={`/player/${player.id}`} className="playerLink">
                     PlayerDetail
-                  </Link>
+                  </Link> */}
+                  <div onClick={() => toggleModal(player.id)}>Modal</div>
                 </div>
               </li>
             );

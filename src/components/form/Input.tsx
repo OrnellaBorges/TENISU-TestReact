@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./input.css";
 
 type InputProps = {
