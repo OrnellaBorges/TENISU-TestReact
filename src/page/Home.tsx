@@ -2,18 +2,24 @@ import { useState } from "react";
 import Main from "./Main";
 import Wrapper from "./Wrapper";
 import Input from "../components/form/Input";
-import PlayerList, {
-  PlayerListProps,
-} from "../components/testComponent/PlayerList";
+import PlayerList from "../components/testComponent/PlayerList";
+import { PlayerType } from "../types/playerType";
+
+type HomeProps = {
+  players: PlayerType[];
+  isError: boolean;
+  isLoading: boolean;
+  setSelectedPlayer: (player: PlayerType) => void;
+};
 
 export default function Home({
   players,
   isLoading,
   isError,
-  toggleModal,
-}: PlayerListProps) {
+  setSelectedPlayer,
+}: HomeProps) {
   const [state, setState] = useState<string>("");
-  console.log(state);
+  //console.log("input", state);
 
   const filteredPlayers = players.filter((player) => {
     function concatLetters() {
@@ -32,6 +38,8 @@ export default function Home({
     // a faire avec la methode REDUCE()
   });
 
+  //console.log("filteredPlayers", filteredPlayers);
+
   return (
     <Main>
       <Wrapper tag="div">
@@ -41,11 +49,10 @@ export default function Home({
 
         {/* <UserList state={state} /> */}
         <PlayerList
-          players={players}
           isError={isError}
           isLoading={isLoading}
-          toggleModal={toggleModal}
           filteredPlayers={filteredPlayers}
+          setSelectedPlayer={setSelectedPlayer}
         />
       </Wrapper>
     </Main>

@@ -1,22 +1,20 @@
-import { PlayerType } from "../../hooks/useGetAllPlayers";
+import { PlayerType } from "../../types/playerType";
 import "./playerList.css";
 
 //import { Link } from "react-router-dom";
 
 export type PlayerListProps = {
-  players: PlayerType[];
   isLoading: boolean;
   isError: boolean;
-  toggleModal: (playerId: number) => void;
-  filteredPlayers: () => void;
+  filteredPlayers: PlayerType[];
+  setSelectedPlayer: (player: PlayerType) => void;
 };
 
 export default function PlayerList({
-  players,
   isLoading,
   isError,
-  toggleModal,
   filteredPlayers,
+  setSelectedPlayer,
 }: PlayerListProps) {
   const getCountryFromUrl = (url: string) => {
     const splitedUrl = url.split("/");
@@ -40,9 +38,9 @@ export default function PlayerList({
 
   return (
     <section className="home-section">
-      {!isLoading && !isError && players && (
+      {!isLoading && !isError && filteredPlayers && (
         <ul>
-          {players.map((player) => {
+          {filteredPlayers.map((player) => {
             const rank = Object.keys(player.data)[0];
             const points = Object.keys(player.data)[1];
 
@@ -51,7 +49,8 @@ export default function PlayerList({
                 key={player.id}
                 className="playerCard"
                 data-image-url={player.picture}
-                onClick={() => toggleModal(player.id)}
+                //onClick={() => toggleModal(player)}
+                onClick={() => setSelectedPlayer(player)}
               >
                 <div className="playerCard__container-image">
                   <img
@@ -82,14 +81,14 @@ export default function PlayerList({
                     <li className="statList-item">
                       <p>COUNTRY</p>
                       <span className="statList-info">
-                        {getCountryFromUrl(player.country.picture)}
+                        {getCountryFromUrl(player.data.country.picture)}
                       </span>
                     </li>
                   </ul>
                   {/* <Link to={`/player/${player.id}`} className="playerLink">
                     PlayerDetail
                   </Link> */}
-                  <div onClick={() => toggleModal(player.id)}>Modal</div>
+                  {/* <div onClick={() => toggleModal(player.id)}>Modal</div> */}
                 </div>
               </li>
             );

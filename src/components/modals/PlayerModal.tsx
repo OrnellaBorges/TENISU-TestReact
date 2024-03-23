@@ -1,24 +1,23 @@
+import { PlayerType } from "../../types/playerType";
 import "./modal.css";
 
-import { PlayerType } from "../../hooks/useGetAllPlayers";
-
-type PlayerDetailsType = {
-  players: PlayerType[];
-  playerId: number | null;
-
-  closeModal: () => void;
+type PlayerModalProps = {
+  joueur: PlayerType | undefined;
+  setSelectedPlayer: (player: PlayerType | undefined) => void;
 };
 
 export default function PlayerModal({
-  players,
-  playerId,
-  closeModal,
-}: PlayerDetailsType) {
-  if (playerId === null) {
+  joueur,
+  setSelectedPlayer,
+}: PlayerModalProps) {
+  /* if (playerId === null) {
+    return <p>Joueur non trouvé</p>;
+  } */
+  if (joueur === undefined) {
     return <p>Joueur non trouvé</p>;
   }
-  console.log("id reçu dans la modal", playerId);
-  console.log("players inside modal", players);
+  //console.log("id reçu dans la modal", playerId);
+  //console.log("players inside modal", players);
 
   /*   const { id } = useParams();
   console.log("ID du joueur:", id);
@@ -37,12 +36,12 @@ export default function PlayerModal({
   }; */
 
   // Recherche du joueur correspondant à l'ID dans la liste des joueurs
-  const player = players.find((player) => player.id === Number(playerId));
-  console.log("Joueur trouvé:", player);
+  //const player = players.find((player) => player.id === Number(playerId));
+  //console.log("Joueur trouvé:", player);
 
-  if (!player) {
+  /* if (!player) {
     return <p>Joueur non trouvé</p>;
-  }
+  } */
 
   // fonction qui extrait et rend dynamique la liste data dans l'objet
   /* const renderDataPlayerList = () => {
@@ -73,13 +72,13 @@ export default function PlayerModal({
   return (
     <div className="modalBackground">
       <div className="titleCloseBtn">
-        <button onClick={() => closeModal()}>X</button>{" "}
+        <button onClick={() => setSelectedPlayer(undefined)}>X</button>{" "}
         {/* Ferme la modal en passant null à toggleModal */}
       </div>
       <div className="modalContainer">
         <div className="title">
           <h2>
-            {player.firstname} {player.lastname}
+            {joueur.firstname} {joueur.lastname}
           </h2>
         </div>
 

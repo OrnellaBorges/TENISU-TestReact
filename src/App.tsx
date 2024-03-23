@@ -7,36 +7,19 @@ import Home from "./page/Home";
 //import PlayerDetail from "./components/details/PlayerDetail";
 import { useGetAllPlayers } from "./hooks/useGetAllPlayers";
 import PlayerModal from "./components/modals/PlayerModal";
+import { PlayerType } from "./types/playerType";
 //import UserList from "./components/list/UserList";
 
 function App() {
   const { isError, isLoading, players } = useGetAllPlayers();
-
-  // state pour la Modal au debut false
-  const [openPlayerModal, setOpenPlayerModal] = useState<boolean>(false);
-
-  const [selectedPlayerId, setSelectedPlayerId] = useState<number | null>(null);
-
-  // fonction qui va mettre a jour le state de la modal
-
-  const toggleModal = (playerId: number | null) => {
-    console.log("playder.id", playerId);
-    console.log("hello");
-    setOpenPlayerModal(!openPlayerModal);
-    setSelectedPlayerId(playerId || null);
-  };
-
-  const handleCloseModal = () => {
-    setOpenPlayerModal(!openPlayerModal);
-  };
+  const [selectedPlayer, setSelectedPlayer] = useState<PlayerType>();
 
   return (
     <>
-      {openPlayerModal && (
+      {selectedPlayer && (
         <PlayerModal
-          players={players}
-          playerId={selectedPlayerId}
-          closeModal={handleCloseModal}
+          joueur={selectedPlayer}
+          setSelectedPlayer={setSelectedPlayer}
         />
       )}
       <Routes>
@@ -47,7 +30,7 @@ function App() {
               players={players}
               isError={isError}
               isLoading={isLoading}
-              toggleModal={toggleModal}
+              setSelectedPlayer={setSelectedPlayer}
             />
           }
         />

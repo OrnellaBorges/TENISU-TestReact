@@ -1,39 +1,53 @@
 import { useState, useEffect } from "react";
 import { getAllPlayers } from "../api/getPlayersData";
-
-// Définir le type pour un joueur
-export type PlayerType = {
-  id: number;
-  firstname: string;
-  lastname: string;
-  country: {
-    picture: string;
-    code: string;
-  };
-  picture: string;
-  data: {
-    rank: number;
-    points: number;
-    weight: number;
-    height: number;
-    age: number;
-    last: number[];
-  };
-};
+import {
+  ApiPlayerType,
+  PlayerType,
+  ResponsePlayerType,
+} from "../types/playerType";
 
 export function useGetAllPlayers() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
   const [players, setPlayers] = useState<PlayerType[]>([]);
 
+  console.log("players", players);
+
+  const completeMissingPlayerInfo = (player: ApiPlayerType) => {
+    return {
+      id: player.id,
+      firstname: player.firstname,
+      lastname: player.lastname,
+      shortname: player.shortname,
+      sex: player.sex,
+      picture: player.picture,
+      data: {
+        rank: player.data.rank,
+        points: player.data.points,
+        country: player.country,
+        birthday: String(player.data.age),
+        age: player.data.age,
+        weight: player.data.weight,
+        height: player.data.height,
+        last: player.data.last,
+      },
+    };
+  };
+
+  const completeMissingPlayersInfo = (players: ApiPlayerType[]) => {
+    return players.map(completeMissingPlayerInfo);
+  };
+
   const tryGetAllPlayersInfo = async () => {
     setIsLoading(true);
     setIsError(false);
     try {
-      const response = await getAllPlayers();
-      /* console.log("response from hook", response);
-            console.log("j'ai recup la data de l'api"); */
-      setPlayers(response.data.players);
+      const response: ResponsePlayerType = await getAllPlayers();
+      const completedPlayers: PlayerType[] = completeMissingPlayersInfo(
+        response.data.players
+      );
+
+      setPlayers(completedPlayers);
       setIsLoading(false);
       return response; // Retourner la réponse complète de l'API
     } catch (error) {
