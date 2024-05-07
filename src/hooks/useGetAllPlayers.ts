@@ -43,13 +43,13 @@ export function useGetAllPlayers() {
     setIsError(false);
     try {
       const response: ResponsePlayerType = await getAllPlayers();
+      console.log("response", response);
       const completedPlayers: PlayerType[] = completeMissingPlayersInfo(
         response.data.players
       );
-
       setPlayers(completedPlayers);
       setIsLoading(false);
-      return response; // Retourner la réponse complète de l'API
+      return response;
     } catch (error) {
       console.error(
         "Erreur lors de la récupération des données des joueurs :",
@@ -57,7 +57,6 @@ export function useGetAllPlayers() {
       );
       setIsLoading(false);
       setIsError(true);
-      throw error;
     }
   };
 
